@@ -1,4 +1,8 @@
-package refactor;
+/*
+ * @autor: Sebastian Sondor
+ * @version: 1.1
+ */
+package seguridad;
 
 
 public class Password {
@@ -15,28 +19,28 @@ public class Password {
     /**
      * Longitud de la contraseÃ±a
      */
-    private int longitud;
+    private int longitudcontrasenya;
     /**
      * caracteres de la contraseÃ±a
      */
-    private String contrasena;
+    private String contrasenya;
   
     //Metodos publicos
   
     /**
-     * Devuelve la longitud
-     * @return longitud de la contraseÃ±a
+     * Devuelve la longitudcontrasenya
+     * @return longitudcontrasenya de la contraseÃ±a
      */
     public int getLongitud() {
-        return longitud;
+        return longitudcontrasenya;
     }
   
     /**
-     * Modifica la longitud de la contraseÃ±a
-     * @param longitud a cambiar
+     * Modifica la longitudcontrasenya de la contraseÃ±a
+     * @param longitudcontrasenya a cambiar
      */
     public void setLongitud(int longitud) {
-        this.longitud = longitud;
+        this.longitudcontrasenya = longitud;
     }
   
     /**
@@ -44,34 +48,49 @@ public class Password {
      * @return contraseÃ±a
      */
     public String getContrasena() {
-        return contrasena;
+        return contrasenya;
     }
   
     /**
-     * Genera una contraseÃ±a al azar con la longitud que este definida
+     * Genera una contraseÃ±a al azar con la longitudcontrasenya que este definida
      * @return contraseÃ±a
      */
     public String generaPassword (){
         String password="";
-        for (int i=0;i<longitud;i++){
+        for (int i=0;i<longitudcontrasenya;i++){
             //Generamos un numero aleatorio, segun este elige si aÃ±adir una minuscula, mayuscula o numero
             int eleccion=((int)Math.floor(Math.random()*3+1));
   
             if (eleccion==1){
-                char minusculas=(char)((int)Math.floor(Math.random()*(123-97)+97));
-                password+=minusculas;
+                password = generaMinusculas(password);
             }else{
                 if(eleccion==2){
-                    char mayusculas=(char)((int)Math.floor(Math.random()*(91-65)+65));
-                    password+=mayusculas;
+                    password = generaMayusculas(password);
                 }else{
-                    char numeros=(char)((int)Math.floor(Math.random()*(58-48)+48));
-                    password+=numeros;
+                    password = generaNumeros(password);
                 }
             }
         }
         return password;
     }
+
+	public String generaNumeros(String password) {
+		char numeros=(char)((int)Math.floor(Math.random()*(58-48)+48));
+		password+=numeros;
+		return password;
+	}
+
+	public String generaMayusculas(String password) {
+		char mayusculas=(char)((int)Math.floor(Math.random()*(91-65)+65));
+		password+=mayusculas;
+		return password;
+	}
+
+	public String generaMinusculas(String password) {
+		char minusculas=(char)((int)Math.floor(Math.random()*(123-97)+97));
+		password+=minusculas;
+		return password;
+	}
   
     /**
      * Comprueba la fortaleza de la contraseÃ±a
@@ -82,11 +101,11 @@ public class Password {
         int cuentaminusculas=0;
         int cuentamayusculas=0;
         //Vamos caracter a caracter y comprobamos que tipo de caracter es
-        for (int i=0;i<contrasena.length();i++){
-                if (contrasena.charAt(i)>=97 && contrasena.charAt(i)<=122){
+        for (int i=0;i<contrasenya.length();i++){
+                if (contrasenya.charAt(i)>=97 && contrasenya.charAt(i)<=122){
                     cuentaminusculas+=1;
                 }else{
-                    if (contrasena.charAt(i)>=65 && contrasena.charAt(i)<=90){
+                    if (contrasenya.charAt(i)>=65 && contrasenya.charAt(i)<=90){
                         cuentamayusculas+=1;
                 }else{
                     cuentanumeros+=1;
@@ -110,12 +129,12 @@ public class Password {
     }
   
     /**
-     * La contrasena sera la pasada por parametro
-     * @param longitud
+     * La contrasenya sera la pasada por parametro
+     * @param longitudcontrasenya
      */
     public Password (int longitud){
-        this.longitud=longitud;
-        contrasena=generaPassword();
+        this.longitudcontrasenya=longitud;
+        contrasenya=generaPassword();
     }
 
 }
