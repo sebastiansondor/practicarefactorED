@@ -1,3 +1,7 @@
+/*
+ * @author: Sebastian Sondor
+ * @version: 1.1
+ */
 package refactor;
 
 
@@ -58,7 +62,7 @@ public class Password {
             int eleccion=((int)Math.floor(Math.random()*3+1));
   
             if (eleccion==1){
-                char minusculas=(char)((int)Math.floor(Math.random()*(123-97)+97));
+            	char minusculas=(char)((int)Math.floor(Math.random()*(123-97)+97));
                 password+=minusculas;
             }else{
                 if(eleccion==2){
@@ -72,7 +76,6 @@ public class Password {
         }
         return password;
     }
-  
     /**
      * Comprueba la fortaleza de la contraseÃ±a
      * @return

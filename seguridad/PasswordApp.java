@@ -1,3 +1,7 @@
+/*
+ * @author: Sebastian Sondor
+ * @version: 1.1
+ */
 package refactor;
 import java.util.Scanner;
 import refactor.Password;
